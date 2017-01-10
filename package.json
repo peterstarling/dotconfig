@@ -1,6 +1,6 @@
 {
   "name": "easydotconfig",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Easy config management with dot notation",
   "main": "build/app.js",
   "scripts": {
