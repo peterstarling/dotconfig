@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var config = exports.config = function () {
+
+exports.default = function () {
 	// Cached config files
 	var files = [];
 
