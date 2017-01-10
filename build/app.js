@@ -10,7 +10,7 @@ var _path2 = _interopRequireDefault(_path);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function () {
+exports.default = function (dir) {
 	// Cached config files
 	var files = [];
 	var appDir = __dirname; //path.dirname(require.main.filename);
@@ -27,7 +27,7 @@ exports.default = function () {
 		} else {
 			// Attempt to require a config file
 			try {
-				config = require('../../../../config/' + file);
+				config = require('../../../' + (dir ? dir + '/' : '') + ('config/' + file));
 
 				if (typeof config.default !== 'undefined') {
 					config = config.default;
@@ -48,4 +48,4 @@ exports.default = function () {
 			return o[i];
 		}, config) || fallback || null;
 	};
-}();
+};
