@@ -1,6 +1,6 @@
 import path from 'path';
 
-export default (function() {
+export default (function(dir) {
 	// Cached config files
 	let files = [];
 	var appDir = __dirname; //path.dirname(require.main.filename);
@@ -17,7 +17,7 @@ export default (function() {
 		} else {
 			// Attempt to require a config file
 			try {
-				config = require(`../../../../config/${file}`);
+				config = require(`../../../` + (dir ? `${dir}/` : '') + `config/${file}`);
 
 				if (typeof config.default !== 'undefined') {
 					config = config.default;
@@ -38,4 +38,4 @@ export default (function() {
 			return o[i];
 		}, config)) || fallback || null;
 	}
-}())
+})

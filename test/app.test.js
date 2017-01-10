@@ -5,16 +5,23 @@ const expect = chai.expect;
 
 describe('config', function() {
 
-	let config;
+	let configModule, config;
 
 	before(function() {
-		config = proxyquire.noCallThru().load('../src/app', { '../../../../config/queue': { 
-			test_var_1: 'test value 1',
-			test_var_2: {
-				nested_val_1: 'some nested value',
-				nested_val_2: 'another nested value'
+		configModule = proxyquire.noCallThru().load('../src/app', { 
+			'../../../config/queue': { 
+				test_var_1: 'test value 1',
+				test_var_2: {
+					nested_val_1: 'some nested value',
+					nested_val_2: 'another nested value'
+				}
+			},
+			'../../../alias/config/queue': {
+				var_custom_dir: 'some value'
 			}
-		} }).default;
+		}).default;
+
+		config = configModule();
 	});
 
 	it('should return value from a file', function() {
@@ -36,5 +43,11 @@ describe('config', function() {
 
 	it('should return fallback value for an undefined config entry', function() {
 		expect(config('asdasdas.asdas', 'fallback value')).to.be.equal('fallback value');
+	});
+
+	it('should return value from custom location', function() {
+		let customConfig = configModule('alias');
+
+		expect(customConfig('queue.var_custom_dir')).to.be.equal('some value');
 	});
 });
