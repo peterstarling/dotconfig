@@ -8,7 +8,7 @@ describe('config', function() {
 	let config;
 
 	before(function() {
-		config = proxyquire.noCallThru().load('../src/app', { '../config/queue': { 
+		config = proxyquire.noCallThru().load('../src/app', { '../../../../config/queue': { 
 			test_var_1: 'test value 1',
 			test_var_2: {
 				nested_val_1: 'some nested value',

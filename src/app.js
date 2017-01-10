@@ -1,6 +1,9 @@
+import path from 'path';
+
 export default (function() {
 	// Cached config files
 	let files = [];
+	var appDir = __dirname; //path.dirname(require.main.filename);
 
 	return function(key, fallback) {
 		let keys = key.split('.');
@@ -14,7 +17,7 @@ export default (function() {
 		} else {
 			// Attempt to require a config file
 			try {
-				config = require(`../config/${file}`);
+				config = require(`../../../../config/${file}`);
 
 				if (typeof config.default !== 'undefined') {
 					config = config.default;

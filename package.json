@@ -2,7 +2,7 @@
   "name": "easydotconfig",
   "version": "1.0.1",
   "description": "Easy config management with dot notation",
-  "main": "app.js",
+  "main": "build/app.js",
   "scripts": {
     "start": "nodemon src/app.js --exec babel-node",
     "build": "babel src -d build",
