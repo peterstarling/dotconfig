@@ -6,7 +6,7 @@ Uses memory caching for already loaded files.
 
 ## Installation
 ```
-  npm install dotconfig --save
+  npm install easydotconfig --save
 ```
 
 ## Usage
